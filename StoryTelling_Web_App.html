@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Storytelling App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .story-container {
+            background: white;
+            padding: 30px;
+            width: 400px;
+            border: 4px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .btn-container {
+            margin: 20px 0;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        #scary-btn {
+            background-color: #ee4b2b;
+            color: white;
+        }
+
+        #funny-btn {
+            background-color: #f1be32;
+        }
+
+        #adventure-btn {
+            background-color: #acd157;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="story-container">
+        <h1>Want to hear a short story?</h1>
+
+        <div class="btn-container">
+            <button class="btn" id="scary-btn">Scary Story</button>
+            <button class="btn" id="funny-btn">Funny Story</button>
+            <button class="btn" id="adventure-btn">Adventure Story</button>
+        </div>
+
+        <p id="result"></p>
+    </main>
+
+    <script>
+        // Selecting elements
+        const storyContainer = document.querySelector(".story-container");
+        const scaryStoryBtn = document.querySelector("#scary-btn");
+        const funnyStoryBtn = document.querySelector("#funny-btn");
+        const adventureStoryBtn = document.querySelector("#adventure-btn");
+        const resultParagraph = document.querySelector("#result");
+
+        // Story object
+        const storyObj = {
+            scary: {
+                story: "In the dark woods, a group of friends stumbled upon an old, abandoned cabin. They enter the cabin and awaken something malevolent that had been dormant for centuries.",
+                borderColor: "#ee4b2b"
+            },
+            funny: {
+                story: "During a camping trip, Mark decided to show off his culinary skills by cooking dinner over an open fire. However, his attempt caused him to burn the dinner as well as his eyebrows off.",
+                borderColor: "#f1be32"
+            },
+            adventure: {
+                story: "Lost in the heart of the Amazon rain forest, Sarah and Jake stumbled upon an ancient temple. They braved deadly traps and encountered strange wildlife, all while deciphering cryptic clues left behind by a mysterious civilization.",
+                borderColor: "#acd157"
+            }
+        };
+
+        // Function to display story
+        function displayStory(genre) {
+            if (storyObj[genre]) {
+                resultParagraph.textContent = storyObj[genre].story;
+                storyContainer.style.borderColor = storyObj[genre].borderColor;
+            }
+        }
+
+        // Event listeners
+        scaryStoryBtn.addEventListener("click", () => displayStory("scary"));
+        funnyStoryBtn.addEventListener("click", () => displayStory("funny"));
+        adventureStoryBtn.addEventListener("click", () => displayStory("adventure"));
+    </script>
+
+</body>
+</html>
